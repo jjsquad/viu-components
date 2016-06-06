@@ -13,11 +13,11 @@
 
 <script>
 
-    import ViuText from './components/viu-text.vue'
+    import ViuInputComponents from './ViuInputComponents.vue'
 
     export default {
         components: {
-            ViuText
+            ViuText: ViuInputComponents.ViuText
         },
 
         data () {
