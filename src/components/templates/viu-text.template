@@ -1,0 +1,15 @@
+<div class="{{ colsize }}">
+    <div class="form-group" :class="{ 'form-inline': inline.toLowerCase() == 'true'}">
+        <label v-if="label" for="{{ name }}" class="input-control">{{ label }}</label>
+        <input type="text"
+               placeholder="{{ placeholder }}"
+               class="form-control"
+               name="{{ name }}"
+               v-model="text"
+               data-mask="{{ mask }}"
+               maxlength="{{ maxlength }}"
+               :readonly="disabled.toLowerCase() == 'true'"
+        />
+        <span v-if="errorMessage && errorMessage.length > 0" class="text-danger">{{ errorMessage }}</span>
+    </div>
+</div>

@@ -1,21 +1,46 @@
 <template>
-  <div id="app">
-    <h1>{{ msg }}</h1>
-  </div>
+    <div id="app">
+        <h1>{{ msg }}</h1>
+        <viu-text size="6"
+                  name="text"
+                  label="Insira o texto:"
+                  inline=""
+                  @changed="textChanged"
+                  :text.sync="msg"
+                  placeholder="Place Holder"
+                  maxlength="5"
+                  disabled="true"
+        >
+        </viu-text>
+    </div>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      // note: changing this line won't causes changes
-      // with hot-reload because the reloaded component
-      // preserves its current state and we are modifying
-      // its initial state.
-      msg: 'Hello Vue!'
+
+    import ViuText from './components/viu-text.vue'
+
+    export default {
+        components: {
+            ViuText
+        },
+
+        data () {
+            return {
+              // note: changing this line won't causes changes
+              // with hot-reload because the reloaded component
+              // preserves its current state and we are modifying
+              // its initial state.
+              msg: 'Hello Vue!'
+            }
+        },
+
+        methods: {
+            textChanged (data) {
+                window.console.log(JSON.stringify(data));
+
+            }
+        }
     }
-  }
-}
 </script>
 
 <style>
