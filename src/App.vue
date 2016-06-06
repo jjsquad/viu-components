@@ -3,15 +3,11 @@
         <h1>{{ msg }}</h1>
         <viu-text size="6"
                   name="text"
-                  label="Insira o texto:"
-                  inline=""
                   @changed="textChanged"
                   :text.sync="msg"
-                  placeholder="Place Holder"
-                  maxlength="5"
-                  disabled="true"
         >
         </viu-text>
+        <viu-text size="6" name="Text2"></viu-text>
     </div>
 </template>
 

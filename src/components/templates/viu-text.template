@@ -1,5 +1,8 @@
 <div class="{{ colsize }}">
-    <div class="form-group" :class="{ 'form-inline': inline.toLowerCase() == 'true'}">
+    <div class="form-group"
+         :class="{ 'form-inline': inline && inline.toLowerCase() == 'true'},
+                 { 'has-error': errorMessage && errorMessage.length > 0 }"
+    >
         <label v-if="label" for="{{ name }}" class="input-control">{{ label }}</label>
         <input type="text"
                placeholder="{{ placeholder }}"
@@ -7,8 +10,8 @@
                name="{{ name }}"
                v-model="text"
                data-mask="{{ mask }}"
-               maxlength="{{ maxlength }}"
-               :readonly="disabled.toLowerCase() == 'true'"
+               maxlength="{{ maxlengt }}"
+               :readonly="disabled && disabled.toLowerCase() == 'true'"
         />
         <span v-if="errorMessage && errorMessage.length > 0" class="text-danger">{{ errorMessage }}</span>
     </div>
