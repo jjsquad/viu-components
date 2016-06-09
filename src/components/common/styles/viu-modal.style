@@ -1,0 +1,58 @@
+[v-cloak] {
+    display: none;
+}
+
+.vm-overlay {
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.vm-modal {
+
+    top:50% !important;
+    transform: translate(0, -50%) !important;
+    -ms-transform: translate(0, -50%) !important;
+    -webkit-transform: translate(0, -50%) !important;
+    margin:auto 5%;
+    width:90%;
+    height:80%;
+    padding: 16px;
+
+    background-color: #e8e8e8;
+    border-bottom: #aaa 1px solid;
+    position: absolute;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 0 16px rgba(0,0,0,0.8);
+    -moz-box-shadow: 0 0 16px rgba(0,0,0,0.8);
+    box-shadow: 0 0 16px rgba(0,0,0,0.8);
+}
+
+.vm-body {
+    position:absolute;
+    top:45px;
+    bottom:45px;
+    left:0;
+    right:0;
+    overflow-y:auto;
+}
+
+.vm-header h4 {
+    margin: 0;
+    padding: 0 12px 0 12px;
+}
+
+.vm-show {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out;
+    z-index: 10000;
+}
+
+.vm-hide {
+    opacity: 0;
+    transition: 250ms ease-in-out, z-index 500ms;
+    z-index: -10000;
+}

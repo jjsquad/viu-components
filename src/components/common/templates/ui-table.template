@@ -1,0 +1,69 @@
+<div class="col-md-{{ size }}">
+    <template v-if="dataSource && dataSource.length > 0 && !loading" v-cloak>
+        <table class="table"
+               :class="tableClass"
+               v-cloak
+        >
+            <thead>
+            <tr>
+                <template v-for="column in columns">
+                    <template v-if="column.sortable">
+                        <th  width="{{ column.width }}"
+                             class="sortable"
+                             :class="column.class"
+                             @click="orderBy(column.name)"
+                        >
+                            <i v-if="column.icon" :class="column.icon"></i>
+                            {{ column.text }}
+                        </th>
+                    </template>
+                    <template v-if="!column.sortable">
+                        <th width="{{ column.width}} " :class="column.class">
+                            <i v-if="column.icon" :class="column.icon"></i>
+                            {{ column.text ? column.text : column.name }}
+                        </th>
+                    </template>
+                </template>
+                <template v-if="actions.length > 0">
+                    <th width="1%" style="{ margin-left: 6px; margin-right: 6px; }" nowrap></th>
+                </template>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="item in dataSource | orderBy sortOrder.column sortOrder.direction" @click="onRowClicked(item)">
+                <template v-for="column in columns">
+                    <td>
+                        {{ item[column.name] }}
+                    </td>
+                </template>
+                <template v-if="actions.length > 0">
+                    <td nowrap>
+                        <template v-for="action in actions">
+                            <template v-if="action.type == undefined">
+                                <button class="action"
+                                        :class="action.class"
+                                        @click="callAction(action.name, item, $event)"
+                                >
+                                    <i v-if="action.icon" :class="action.icon"></i>
+                                    {{ action.label }}
+                                </button>
+                            </template>
+                            <template v-if="action.type == 'link'">
+                                <a href class="action" :class="action.class"
+                                   @click="callAction(action.name, item, $event)"
+                                >
+                                    <i v-if="action.icon" :class="action.icon"></i>
+                                    {{ action.label }}
+                                </a>
+                            </template>
+                        </template>
+                    </td>
+                </template>
+            </tr>
+            </tbody>
+        </table>
+    </template>
+    <template v-if="dataSource && dataSource.length == 0 && !loading" v-cloak>
+        <h3>{{ nodataText }}</h3>
+    </template>
+</div>

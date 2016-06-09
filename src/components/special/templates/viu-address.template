@@ -1,0 +1,106 @@
+<div class="sizeClass">
+    <div class="row">
+        <!--CEP-->
+        <div class="col-md-3">
+            <div class="form-group" :class="cepErrorClass">
+                <label v-if="labelsVisible" for="cep" class="input-control">CEP:</label>
+                <input type="text"
+                       name="cep"
+                       class="form-control"
+                       v-model="cep"
+                       data-mask="00000-000"
+                       @keyup="buscaCep, onChange({'name':'cep', 'text': cep })"
+                       @blur="buscaCep, onChange({'name':'cep', 'text': cep })"
+                />
+            <span class="text-danger" v-if="cepNotFound">
+                {{ cepNotFoundText }}cep
+            </span>
+            <span class="text-danger" v-if="cepInvalid">
+                {{ cepInvalidText }}
+            </span>
+            </div>
+        </div>
+
+        <!--ENDERECO NUMERO COMPLEMENTO-->
+        <div class="col-md-4">
+            <div class="form-group">
+                <label v-if="labelsVisible" for="logradouro" class="input-control">Endereço:</label>
+                <input type="text"
+                       name="logradouro"
+                       class="form-control"
+                       v-model="logradouro"
+                       v-el:logradouro
+                       @blur="onChange({'name':'logradouro', 'text': logradouro })"
+                       @change="onChange({'name':'logradouro', 'text': logradouro })"
+                />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label v-if="labelsVisible" for="numero" class="input-control">Nº:</label>
+                <input type="text"
+                       name="numero"
+                       class="form-control"
+                       v-model="numero"
+                       data-mask="00000"
+                       v-el:numero
+                       @blur="onChange({'name':'numero', 'text': numero })"
+                       @change="onChange({'name':'numero', 'text': numero })"
+                />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label v-if="labelsVisible" for="complemento" class="input-control">Complemento:</label>
+                <input type="text"
+                       name="complemento"
+                       class="form-control"
+                       v-model="complemento"
+                       @blur="onChange({'name':'complemento', 'text': complemento })"
+                       @change="onChange({'name':'complemento', 'text': complemento })"
+                />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!--BAIRRO CIDADE ESTADO-->
+        <div class="col-md-3">
+            <div class="form-group">
+                <label v-if="labelsVisible" for="bairro" class="input-control">Bairro:</label>
+                <input type="text"
+                       name="bairro"
+                       class="form-control"
+                       v-model="bairro"
+                       @blur="onChange({'name':'bairro', 'text': bairro })"
+                       @change="onChange({'name':'bairro', 'text': bairro })"
+                />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label v-if="labelsVisible" for="localidade" class="input-control">Cidade:</label>
+                <input type="text"
+                       name="localidade"
+                       class="form-control"
+                       v-model="localidade"
+                       @blur="onChange({'name':'localidade', 'text': localidade })"
+                       @change="onChange({'name':'localidade', 'text': localidade })"
+                />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label v-if="labelsVisible" for="uf" class="input-control">Estado:</label>
+                <input type="text"
+                       name="uf"
+                       class="form-control"
+                       v-model="uf"
+                       data-mask="SS"
+                       @blur="onChange({'name':'uf', 'text': uf })"
+                       @change="onChange({'name':'uf', 'text': uf })"
+                />
+            </div>
+        </div>
+    </div>
+</div>

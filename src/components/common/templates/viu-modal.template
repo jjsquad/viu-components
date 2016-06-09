@@ -1,0 +1,12 @@
+<div>
+    <div @click="close" class="vm-overlay" :class="{ 'vm-show': isVisible, 'vm-hide': !isVisible }"></div>
+
+    <div class="vm-modal" :class="{ 'vm-show': isVisible, 'vm-hide': !isVisible }">
+        <div v-show="isHeaderVisible" class="vm-header">
+            <h4>{{ title }}</h4>
+        </div>
+        <div class="vm-body" v-cloak>
+            <slot></slot>
+        </div>
+    </div>
+</div>
